@@ -32,7 +32,6 @@ class SentryTarget extends Target
      */
     private $client = null;
 
-
     /**
      * Initializes the DbTarget component.
      * This method will initialize the [[db]] property to make sure it refers to a valid DB connection.
@@ -54,7 +53,10 @@ class SentryTarget extends Target
      */
     public function collect($messages, $final)
     {
-        $this->messages = array_merge($this->messages, $this->filterMessages($messages, $this->getLevels(), $this->categories, $this->except));
+        $this->messages = array_merge(
+            $this->messages,
+            $this->filterMessages($messages, $this->getLevels(), $this->categories, $this->except)
+        );
         $count = count($this->messages);
         if ($count > 0 && ($final || $this->exportInterval > 0 && $count >= $this->exportInterval)) {
             $this->export();
@@ -78,25 +80,27 @@ class SentryTarget extends Target
             $templateData = null;
             if (is_array($msg)) {
                 $errStr = isset($msg['msg']) ? $msg['msg'] : '';
-                if (isset($msg['data']))
-                    $options['extra'] = $msg['data']; 
+                if (isset($msg['data'])) {
+                    $options['extra'] = $msg['data'];
+                }
             } else {
                 $errStr = $msg;
             }
 
             // Store debug trace in extra data
             $traces = array_map(
-                function($v) {
-                    return "{$v['file']}".PHP_EOL."{$v['class']}::{$v['function']} [{$v['line']}]";
+                function ($v) {
+                    return "{$v['file']}" . PHP_EOL . "{$v['class']}::{$v['function']} [{$v['line']}]";
                 },
                 $traces
             );
-            if (!empty($traces))
+            if (!empty($traces)) {
                 $options['extra']['traces'] = $traces;
+            }
 
             $this->client->captureMessage(
                 $errStr,
-                array(),
+                [],
                 $options,
                 false
             );

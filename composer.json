@@ -1,9 +1,15 @@
 {
-    "name": "darkair/yii2-sentry-log",
+    "name": "intersvyaz/yii2-sentry-log",
     "type": "yii2-extension",
     "description": "Simple Yii2 Sentry target for logging (http://getsentry.com)",
-    "keywords": ["yii2", "sentry", "log", "logger", "target", "logging"],
-    "version": "0.2.0",
+    "keywords": [
+        "yii2",
+        "sentry",
+        "log",
+        "logger",
+        "target",
+        "logging"
+    ],
     "license": "BSD",
     "authors": [
         {
@@ -13,7 +19,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "raven/raven": "0.8.0"
+        "raven/raven": "~0.11.0"
     },
     "require-dev": {
         "yiisoft/yii2": "*"
