@@ -30,7 +30,7 @@ class SentryTarget extends Target
     /**
      * @var Raven_Client client for working with sentry
      */
-    private $client = null;
+    protected $client = null;
 
     /**
      * Initializes the DbTarget component.
