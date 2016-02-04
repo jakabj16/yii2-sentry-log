@@ -83,6 +83,9 @@ class SentryTarget extends Target
                 if (isset($msg['data'])) {
                     $options['extra'] = $msg['data'];
                 }
+            } elseif (is_a($msg, Exception)) {
+                $errStr = $msg->getMessage();
+                $traces = $msg->getTrace();
             } else {
                 $errStr = $msg;
             }
