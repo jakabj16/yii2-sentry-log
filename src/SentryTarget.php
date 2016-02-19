@@ -74,7 +74,7 @@ class SentryTarget extends Target
 
             $errStr = '';
             $options = [
-                'level' => yii\log\Logger::getLevelName($level),
+                'level' => \yii\log\Logger::getLevelName($level),
                 'extra' => [],
             ];
             $templateData = null;
@@ -83,7 +83,7 @@ class SentryTarget extends Target
                 if (isset($msg['data'])) {
                     $options['extra'] = $msg['data'];
                 }
-            } elseif (is_a($msg, Exception)) {
+            } elseif (is_a($msg, \yii\base\Exception::class)) {
                 $errStr = $msg->getMessage();
                 $traces = $msg->getTrace();
             } else {
