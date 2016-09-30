@@ -93,7 +93,12 @@ class SentryTarget extends Target
             // Store debug trace in extra data
             $traces = array_map(
                 function ($v) {
-                    return "{$v['file']}" . PHP_EOL . "{$v['class']}::{$v['function']} [{$v['line']}]";
+                    $file = isset($v['file']) ? $v['file'] : 'unknown file';
+                    $line = isset($v['line']) ? $v['line'] : 'unknown line';
+                    $class = isset($v['class']) ? $v['class'] : 'unknown class';
+                    $function = isset($v['function']) ? $v['function'] : 'unknown function';
+
+                    return $file . PHP_EOL . "$class::$function [$line]";
                 },
                 $traces
             );
