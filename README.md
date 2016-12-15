@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-$ php composer.phar require intersvyaz/yii2-sentry-log "~1.0.0"
+$ php composer.phar require jakabj16/yii2-sentry-log "~1.0.0"
 ```
 
 or add
 
 ```
-"intersvyaz/yii2-sentry-log": "~1.0.0"
+"jakabj16/yii2-sentry-log": "~1.0.0"
 ```
 
 to the ```require``` section of your `composer.json` file.
@@ -33,6 +33,7 @@ Add target class in your project config:
                 'class' => 'sentry\SentryTarget',
                 'levels' => ['error', 'warning'],   // or smth else
                 'dsn' => '',                        // sentry access string
+                'options' => ['release' => 'dev'],  // sentry options
             ],
         ],
     ],
