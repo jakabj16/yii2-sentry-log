@@ -26,6 +26,11 @@ class SentryTarget extends Target
      * @var string dsn for sentry access
      */
     public $dsn = '';
+    
+    /**
+     * @var array options for sentry options
+     */
+    public $options = array();
 
     /**
      * @var Raven_Client client for working with sentry
@@ -40,7 +45,7 @@ class SentryTarget extends Target
     public function init()
     {
         parent::init();
-        $this->client = new \Raven_Client($this->dsn);
+        $this->client = new \Raven_Client($this->dsn,$this->options);
     }
 
     /**
