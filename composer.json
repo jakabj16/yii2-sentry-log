@@ -1,5 +1,5 @@
 {
-    "name": "intersvyaz/yii2-sentry-log",
+    "name": "jakabj16/yii2-sentry-log",
     "type": "yii2-extension",
     "description": "Simple Yii2 Sentry target for logging (http://getsentry.com)",
     "keywords": [
